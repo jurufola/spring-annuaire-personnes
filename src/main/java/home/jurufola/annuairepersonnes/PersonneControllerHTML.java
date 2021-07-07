@@ -51,8 +51,10 @@ public class PersonneControllerHTML {
     }
 
     @PostMapping("ajoutpersonne")
-    public String addPersonne(@ModelAttribute Personne personne) {
+    public String addPersonne(@ModelAttribute Personne personne, Model model) {
         personneService.addPersonne(personne);
+        List<Personne> personnes = personneService.getPersonnes();
+        model.addAttribute("personnes", personnes);
         return "personnes";
     }
 }

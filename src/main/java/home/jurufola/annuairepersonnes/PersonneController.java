@@ -7,12 +7,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controlleur gerant la personne
+ * @author juruf_000
+ */
+
 @RestController
 public class PersonneController {
 
     @Autowired
     PersonneService personneService;
 
+    /**
+     * Retourne la liste des personnes
+     * @return La liste des personnes
+     */
     @GetMapping("personnes")
     public List<Personne> getPersonnes(){
 

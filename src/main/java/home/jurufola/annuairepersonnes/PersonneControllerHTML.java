@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -33,4 +36,23 @@ public class PersonneControllerHTML {
         return "personnes";
     }
 
+    /*@GetMapping("/personneForm")
+    public ModelAndView getPersonneForm(ModelAndView modelAndView) {
+        Personne personne = new Personne();
+        modelAndView.addObject("personne", personne);
+        modelAndView.setViewName("personneForm");
+        return modelAndView;
+    }*/
+
+    @GetMapping("ajoutpersonne")
+    public String personneForm(Model model) {
+        model.addAttribute("personne", new Personne());
+        return "ajoutpersonne";
+    }
+
+    @PostMapping("ajoutpersonne")
+    public String addPersonne(@ModelAttribute Personne personne) {
+        personneService.addPersonne(personne);
+        return "personnes";
+    }
 }

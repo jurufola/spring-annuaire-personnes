@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste personnes</title>
+    <style>
+        .navbar {
+
+            list-style: none;
+        }
+        .navbar li {
+           display: inline-block;
+        }
+    </style>
 </head>
 <body>
+    <ul class="navbar">
+        <li><a href="./listpersonnes">Liste des Personnes</a></li>
+        <li><a href="./ajoutpersonne"> ajouter une personne</a></li>
+    </ul>
     <ul>
         <li th:each="personne : ${personnes}" th:text="${personne.prenom} + ' ' + ${personne.nom}"></li>
     </ul>

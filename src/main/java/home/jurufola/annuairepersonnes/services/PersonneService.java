@@ -51,7 +51,7 @@ public class PersonneService {
 
     public String update(Long id, Personne newPersonne) {
         // Recup personne
-        Personne p = personneRepository.getById(id);
+        Personne p = personneRepository.findById(id).get();
         p.setPrenom(newPersonne.getPrenom());
         p.setNom(newPersonne.getNom());
         p.setAge(newPersonne.getAge());
@@ -62,7 +62,7 @@ public class PersonneService {
 
 
     public void delete(Long id) {
-        Personne p = personneRepository.getById(id);
+        Personne p = personneRepository.findById(id).get();
         personneRepository.delete(p);
     }
 

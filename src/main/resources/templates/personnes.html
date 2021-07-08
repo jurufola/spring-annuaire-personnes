@@ -11,15 +11,31 @@
         .navbar li {
            display: inline-block;
         }
+        table, td, th {
+            border: 1px solid black;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            padding: 3px;
+        }
     </style>
 </head>
 <body>
-    <ul class="navbar">
-        <li><a href="./listpersonnes">Liste des Personnes</a></li>
-        <li><a href="./ajoutpersonne"> ajouter une personne</a></li>
-    </ul>
-    <ul>
-        <li th:each="personne : ${personnes}" th:text="${personne.prenom} + ' ' + ${personne.nom}"></li>
-    </ul>
+    <div  th:replace="navbar :: navbar_fragment"></div>
+    <h1>Annuaire Personnes</h1>
+    <table>
+        <tr><th>Id</th><th>Prénom</th><th>Nom</th><th>Actions</th></tr>
+        <tr th:each="personne: ${personnes}">
+            <td th:text="${personne.id}" />
+            <td th:text="${personne.prenom}" />
+            <td th:text="${personne.nom}" />
+            <td><a th:href="@{/editpersonne/{id}(id=${personne.id})}">Editer</a></td>
+            <td><a th:href="@{/editpersonne/{id}(id=${personne.id})}">Supprimer</a></td>
+            <!--<td><a th:href="${'/editpersonne/' + personne.id }">Editer</a></td>-->
+
+        </tr>
+    </table>
 </body>
 </html>

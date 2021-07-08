@@ -2,7 +2,7 @@
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Ajout</title>
+    <title>Edition Personne</title>
     <style>
         .navbar {
 
@@ -15,46 +15,46 @@
 </head>
 <body>
     <div  th:replace="navbar :: navbar_fragment"></div>
-    <form th:action="@{/ajoutpersonne}" th:object="${personne}" method="post">
+    <form th:action="@{/updatepersonne/{id}(id=${personne.id})}" th:object="${personne}" method="post">
         <fieldset>
             <legend>Identité</legend>
             <div>
                 <label>Prénom:</label>
-                <input type="text" th:field="*{prenom}"/>
+                <input type="text" id="prenom" name="prenom" th:value="*{prenom}"/>
             </div>
             <div>
                 <label>Nom:</label>
-                <input type="text" th:field="*{nom}"/>
+                <input type="text" id="nom" name="nom" th:value="*{nom}"/>
             </div>
             <div>
                 <label>Age:</label>
-                <input type="number" th:field="*{age}"/>
+                <input type="number" id="age" name="age" th:value="*{age}"/>
             </div>
             <div>
                 <label>Sexe:</label>
-                <input type="text" th:field="*{sexe}"/>
+                <input type="text" id="sexe" name="sexe" th:value="*{sexe}"/>
             </div>
         </fieldset>
         <fieldset>
             <legend>Adresse</legend>
             <div>
                 <label>Numéro:</label>
-                <input type="text" th:field="${personne.adresse.numero}"/>
+                <input type="text" id="numero" name="numero" th:value="${personne.adresse.numero}"/>
             </div>
             <div>
                 <label>Rue:</label>
-                <input type="text" th:field="${personne.adresse.rue}"/>
+                <input type="text" id="rue" name="rue" th:value="${personne.adresse.rue}"/>
             </div>
             <div>
                 <label>Code Postal:</label>
-                <input type="text" th:field="${personne.adresse.codePostal}"/>
+                <input type="text" id="codepostal" name="codepostal" th:value="${personne.adresse.codePostal}"/>
             </div>
             <div>
                 <label>Ville:</label>
-                <input type="text" th:field="${personne.adresse.ville}"/>
+                <input type="text" id="ville" name="ville" th:value="${personne.adresse.ville}"/>
             </div>
         </fieldset>
-        <button type="submit">Enregistrer</button>
+        <button type="submit">Mettre à jour</button>
 
     </form>
 </body>
